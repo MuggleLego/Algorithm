@@ -1,5 +1,7 @@
 # ABOUT:
 
-- **data structure**
+- **Data Structure**
 
-- **dynamic programming**
+- **Dynamic Programming**
+
+- **Sorting**
