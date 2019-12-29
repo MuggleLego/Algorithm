@@ -1,3 +1,5 @@
+//function:create_new_node,search,insert,delete,find_maximum,find_minimum,find_successor;
+
 struct TreeNode {
      int val;
      struct TreeNode *left;
