@@ -1,5 +1,5 @@
 # ABOUT:
 
-- data structure
+- **data structure**
 
-- dynamic programming
+- **dynamic programming**
