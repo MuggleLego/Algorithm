@@ -1,7 +1,17 @@
-# ABOUT:
 
-- **Data Structure**
+**Data Structure**
+- stack
+- queue
+- binary search tree
+- heap
 
-- **Dynamic Programming**
+**Dynamic Programming**
+- rod_cutting
 
-- **Sorting**
+**Sorting**
+- bubble_sort
+- select_sort
+- insert_sort
+- merge_sort
+- quick_sort
+- counting_sort
