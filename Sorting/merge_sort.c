@@ -1,8 +1,11 @@
-//merge:input two ordered arrays.
-//      output an ordered array.
-//merge_sort:input a random array.
-//           output an ordered array by divide array into subarray recursively.
+//input:a random array
+//output:an ordered array
 
+#include<stdio.h>
+#include<stdlib.h>
+
+//input:two ordered arrays
+//output:an ordered array
 int* merge(int* a,int* b,int len_a,int len_b){
         int* res=(int*)malloc(sizeof(int)*(len_a+len_b)); //malloc the new array
         int* end_b=b+len_b;  //tail pointers
@@ -35,6 +38,8 @@ int* merge(int* a,int* b,int len_a,int len_b){
         return res;
 }
 
+//input:a random array
+//output:an ordered array by divide array into subarray recursively.
 int* merge_sort(int* a,int size){
         if(size==1)
                 return a;    //base case
