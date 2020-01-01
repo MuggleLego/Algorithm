@@ -4,6 +4,9 @@
 - queue
 - binary search tree
 - heap
+- Red-black tree (TBD)
+- OS tree (TBD)
+- interval tree (TBD)
 
 **Dynamic Programming**
 - rod_cutting
@@ -15,4 +18,6 @@
 - merge_sort
 - quick_sort
 - counting_sort
+- radix_sort (TBD)
 - heap_sort
+- bucket_sort (TBD)
