@@ -15,3 +15,4 @@
 - merge_sort
 - quick_sort
 - counting_sort
+- heap_sort
