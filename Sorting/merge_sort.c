@@ -1,6 +1,3 @@
-//input:a random array
-//output:an ordered array
-
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -8,31 +5,25 @@
 //output:an ordered array
 int* merge(int* a,int* b,int len_a,int len_b){
         int* res=(int*)malloc(sizeof(int)*(len_a+len_b)); //malloc the new array
-        int* end_b=b+len_b;  //tail pointers
-        int* end_a=a+len_a;
         int* p_a=a;  //head pointers
         int* p_b=b;
-        int i=0;  //counter
-        while(p_a != end_a && p_b != end_b){  //pick the smaller one into new array
+        int i=0;  //index of new array
+        while(p_a != a+len_a && p_b != b+len_b){  //pick the smaller one into new array
                 if(*p_a<*p_b){
-                        res[i++]=*p_a;
-                        p_a++;
+                        res[i++]=*(p_a++);
                 }
                 else{
-                        res[i++]=*p_b;
-                        p_b++;
+                        res[i++]=*(p_b++);
                 }
         }
-        if(p_a == end_a){   //put the rest of array b in the new array 
-                while(p_b!=end_b){
-                        res[i++]=*p_b;
-                        p_b++;
+        if(p_a == a+len_a){   //put the rest of array b in the new array 
+                while(p_b!=b+len_b){
+                        res[i++]=*(p_b++);
                 }
         }
         else{
-                while(p_a!=end_a){   //put the rest of array a in the new array
-                        res[i++]=*p_a;
-                        p_a++;
+                while(p_a!=a+len_a){   //put the rest of array a in the new array
+                        res[i++]=*(p_a++);
                 }
         }
         return res;
