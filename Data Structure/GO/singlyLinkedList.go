@@ -1,3 +1,8 @@
+//data:10.22
+//path:~/Code/GO
+//method:newNode(data),newSingleList(),insert(data),append(data),search(target),delete(target),
+//modify(tar,sub),printSingleList()
+
 package main
 
 import (
