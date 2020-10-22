@@ -1,3 +1,7 @@
+//data:10.22
+//path:~/Code/GO
+//method:newListStack(),push(data),pop(),printListStack()
+
 package main
 
 import (
