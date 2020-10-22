@@ -1,3 +1,6 @@
+//data:10.22
+//path:~/Code/GO
+//method:newQueue(),enqueue(data),dequeue(),printQueue()
 package main
 
 import (
