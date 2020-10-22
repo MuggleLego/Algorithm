@@ -1,3 +1,7 @@
+//data:10.22
+//path:~/Code/GO
+//method:newStack(),isEmpty(),push(data),pop()
+
 package main
 
 import (
