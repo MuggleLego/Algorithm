@@ -1,5 +1,4 @@
-//date:2020.10.30
-//Action:push(),delete(),search(),inorderTraversal()
+//
 package main
 
 import "fmt"
@@ -9,9 +8,10 @@ import "fmt"
 //All the values in the right subtree are greater than the root
 
 type treeNode struct {
-	data  int
-	left  *treeNode
-	right *treeNode
+	data   int
+	left   *treeNode
+	right  *treeNode
+	parent *treeNode
 }
 
 type binarySearchTree struct {
@@ -22,34 +22,34 @@ func newTreeNode(t int) *treeNode {
 	return &treeNode{data: t}
 }
 
-func newBinarySearchTree(r int) *binarySearchTree {
-	return &binarySearchTree{root: newTreeNode(r)}
+func newBinarySearchTree() *binarySearchTree {
+	return &binarySearchTree{}
 }
 
 //Insert a leaf into a tree
 func (tree *binarySearchTree) push(t int) {
 	n := newTreeNode(t)
-	if tree.root == nil {
+	var tmp *treeNode = nil
+	walker := tree.root
+	for walker != nil {
+		tmp = walker
+		if t < walker.data {
+			walker = walker.left
+		} else {
+			walker = walker.right
+		}
+	}
+	n.parent = tmp
+	if tmp == nil {
 		tree.root = n
 		return
 	}
-	ftr := tree.root
-	walk := tree.root
-	for walk != nil {
-		ftr = walk
-		if t < walk.data {
-			walk = walk.left
-		} else {
-			walk = ftr.right
-		}
-	}
-	if t < ftr.data {
-		ftr.left = n
+	if t < tmp.data {
+		tmp.left = n
 	} else {
-		ftr.right = n
+		tmp.right = n
 	}
 }
-
 
 //the iteration stop when the walker walk out of the tree
 //or the walker walk to the node we want
@@ -65,24 +65,20 @@ func (tree *binarySearchTree) search(key int) *treeNode {
 	return walker
 }
 
-func (node *treeNode) predecessor() (*treeNode, *treeNode) {
-	walker := node
-	pre := walker.left
+func (node *treeNode) predecessor() *treeNode {
+	pre := node.left
 	for pre != nil && pre.right != nil {
-		walker = pre
 		pre = pre.right
 	}
-	return pre, walker
+	return pre
 }
 
-func (node *treeNode) successor() (*treeNode, *treeNode) {
-	walker := node
-	pre := walker.right
+func (node *treeNode) successor() *treeNode {
+	pre := node.right
 	for pre != nil && pre.left != nil {
-		walker = pre
 		pre = pre.left
 	}
-	return pre, walker
+	return pre
 }
 
 //the case following are disjoint
@@ -100,11 +96,11 @@ func (tree *binarySearchTree) delete(key int) {
 		n = nil
 		return
 	}
-	var suc, f *treeNode
+	var suc *treeNode
 	if n.right == nil { //case 4
-		suc, f = n.predecessor()
+		suc = n.predecessor()
 	} else { //case 3 or 4
-		suc, f = n.successor()
+		suc = n.successor()
 	}
 	if n == tree.root { //those case will change the root aritribute
 		if n.left == nil && n.right == nil {
@@ -121,10 +117,10 @@ func (tree *binarySearchTree) delete(key int) {
 		}
 	}
 	n.data = suc.data
-	if suc == f.left {
-		f.left = nil
+	if suc == suc.parent.left {
+		suc.parent.left = nil
 	} else {
-		f.right = nil
+		suc.parent.right = nil
 	}
 }
 
@@ -142,19 +138,19 @@ func (tree *binarySearchTree) inorderTraversal() {
 }
 
 func main() {
-	tree := newBinarySearchTree(5)
+	tree := newBinarySearchTree()
 	tree.push(5)
 	tree.push(7)
 	tree.push(4)
-	tree.push(1)
 	tree.push(6)
 	tree.push(3)
+	tree.push(1)
 	tree.inorderTraversal()
 	tree.delete(5)
 	tree.inorderTraversal()
 	tree.delete(5)
 	tree.inorderTraversal()
 	tree.delete(6)
-	tree.delete(7)
+	tree.delete(0)
 	tree.inorderTraversal()
 }
