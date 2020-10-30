@@ -29,6 +29,10 @@ func newBinarySearchTree(r int) *binarySearchTree {
 //Insert a leaf into a tree
 func (tree *binarySearchTree) push(t int) {
 	n := newTreeNode(t)
+	if tree.root == nil {
+		tree.root = n
+		return
+	}
 	ftr := tree.root
 	walk := tree.root
 	for walk != nil {
@@ -125,12 +129,11 @@ func (tree *binarySearchTree) delete(key int) {
 }
 
 func (node *treeNode) inorder() {
-	if node == nil {//base case
-		return
+	if node != nil {
+		node.left.inorder()
+		fmt.Printf("%d ", node.data)
+		node.right.inorder()
 	}
-	node.left.inorder()
-	fmt.Printf("%d ", node.data)
-	node.right.inorder()
 }
 
 func (tree *binarySearchTree) inorderTraversal() {
