@@ -331,6 +331,20 @@ func (rbt *redBlackTree) delete(v int) {
 	}
 }
 
+func (n *redBlackTreeNode) blackHeight(_nil *redBlackTreeNode) int {
+	if n == _nil {
+		return 0
+	} else if n.color == black {
+		return 1 + n.left.blackHeight(_nil)
+	} else {
+		return n.left.blackHeight(_nil)
+	}
+}
+
+func (rbt *redBlackTree) isBST() bool {
+	return rbt.root.left.blackHeight(rbt.t_nil) == rbt.root.right.blackHeight(rbt.t_nil)
+}
+
 func main() {
 	rbt := newRedBlackTree()
 	rbt.insert(26)
@@ -343,4 +357,7 @@ func main() {
 	rbt.insert(10)
 	rbt.delete(26)
 	rbt.inorderTraversal()
+	fmt.Println(rbt.isBST())
+	rbt.root.right.color = red
+	fmt.Println(rbt.isBST())
 }
