@@ -4,7 +4,8 @@
 - queue
 - binary search tree
 - heap
-- Red-black tree (TBD)
+- Red-black tree
+- AVL tree
 - OS tree (TBD)
 - interval tree (TBD)
 
